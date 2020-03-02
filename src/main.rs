@@ -33,7 +33,7 @@ impl Display for BoardState{
         match self{
             Empty => f.write_str("||`  `||"),
             Count(v) => f.write_fmt(format_args!("||`{} `||",v)),
-            Bomb => f.write_str("||`\u{1f4a3}`||")
+            Bomb => f.write_str("||`<>`||")
         }
     }
 }
