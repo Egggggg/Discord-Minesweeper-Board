@@ -18,6 +18,8 @@ impl Default for BoardState{
 use BoardState::*;
 use std::fmt::{Display, Formatter, Error};
 
+const DIGITS: [&'static str; 9] = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
+
 impl BoardState{
     pub fn inc(&mut self){
         match self{
@@ -31,9 +33,9 @@ impl BoardState{
 impl Display for BoardState{
     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error> {
         match self{
-            Empty => f.write_str("||`  `||"),
-            Count(v) => f.write_fmt(format_args!("||`{} `||",v)),
-            Bomb => f.write_str("||`<>`||")
+            Empty => f.write_str("||`▫️`||"),
+            Count(v) => f.write_fmt(format_args!("||`{}`||", DIGITS[*v as usize])),
+            Bomb => f.write_str("||`💣`||"),
         }
     }
 }
